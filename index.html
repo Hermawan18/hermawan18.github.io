@@ -6,8 +6,12 @@
     <title>My Portfolio | Hermawan Tri Yulianto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css" />
+
     <!-- bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+
+    <!-- AOS (animation on scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <!-- navbar -->
@@ -40,7 +44,7 @@
     <section class="jumbotron text-center mt-5">
       <img src="/img/liu yi fei.png" alt="Liu Yi Fei" class="rounded-circle img-thumbnail" />
       <h1 class="display-4">Hermawan Tri Yulianto</h1>
-      <p class="lead">Web Developer | Youtuber</p>
+      <p class="lead"></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffffff"
@@ -51,16 +55,16 @@
     </section>
 
     <!-- about -->
-    <section id="about">
+    <section id="about" data-aos-duration="1000">
       <div class="container text-center">
-        <div class="row">
+        <div class="row" data-aos="fade-bottom">
           <h2>About Me</h2>
         </div>
         <div class="row justify-content-center mb-5">
-          <div class="col-md-4">
+          <div class="col-md-4 about-left" data-aos="fade-right">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet illum ratione sint, dignissimos et corporis, earum incidunt velit quos explicabo esse alias. Sed consectetur ea numquam praesentium! Dolorum, labore possimus?</p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 about-right" data-aos="fade-left">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus soluta minima delectus tempore id modi quia corporis facilis earum quas placeat libero tenetur, architecto necessitatibus autem inventore! Quos, doloremque
               placeat?
@@ -81,7 +85,7 @@
     <section id="project" style="background-color: #e2edff">
       <div class="container">
         <div class="row text-center">
-          <h2>My Gallery</h2>
+          <h2>Project</h2>
         </div>
         <div class="row justify-content-center">
           <div class="col-md-4 col-sm-6 mb-3">
@@ -115,6 +119,49 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <h2>Gallery</h2>
+          </div>
+        </div>
+        <div class="row img-fluid justify-content-center">
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.1.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.2.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.3.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.4.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.5.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.6.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.7.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.8.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/1.9.png" alt="img" class="gallery-img" />
+          </div>
+          <div class="col-md-3 col-sm-4">
+            <img src="/img/2.0.png" alt="img" class="gallery-img" />
           </div>
         </div>
       </div>
@@ -195,6 +242,31 @@
           })
           .catch((error) => console.error('Error!', error.message));
       });
+    </script>
+
+    <!-- AOS (animation on scroll) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      const galleryImage = document.querySelectorAll('.gallery-img');
+
+      galleryImage.forEach((img, i) => {
+        img.dataset.aos = 'fade-down';
+        img.dataset.aosDelay = i * 100;
+        img.dataset.aosDuration = 800;
+      });
+
+      AOS.init();
+    </script>
+
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.to('.lead', { duration: 2, text: 'Web Developer | Youtuber', delay: 1 });
+      gsap.from('.jumbotron img', { duration: 1, rotationY: 360, opacity: 0 });
+      gsap.from('.navbar', { duration: 1, y: -100, opacity: 0, ease: 'bounce' });
+      gsap.from('.jumbotron h1', { duration: 1, x: -200, opacity: 0, delay: 0.2 });
     </script>
   </body>
 </html>
